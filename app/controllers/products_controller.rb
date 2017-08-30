@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   
   def display_all_method
-    @products_all = Product.all
+    @products = Product.all
+    render "display_all.html.erb"
   end 
 
 end

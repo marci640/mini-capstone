@@ -1,4 +1,15 @@
+<h2> Here the the products available: </h2>
 
-<h2> Hello </h2>
+<% @products.each do |product| %> 
+
+<h3> <%= product.name %> </h3>
+
+<ul> 
+  <li> Price: <%= product.price %> </li>
+  <li> Description: <%= product.description %> </li>
+  <li> <img src= "<%= product.image %>" > </li> th
+</ul>
+
+<% end %>
 
 
