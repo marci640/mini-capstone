@@ -1,0 +1,40 @@
+<main>
+  <header>
+    <img src="https://lh3.googleusercontent.com/zz04uNwHNKAsOSFMqn6wOeCVJxRm7kQdtnDEIYuSVX85CgKDOnqg3sjYkkDkvNdk_OXhpBAsy0VryVDxO2hfGHhzA70Y3r2gxiQKpXxIcMPcKwxA55z0Kv1QHgMO8hpBex-a4w-Ovw">
+  </header>
+  
+<div class="row">
+  <% @products.each do |product| %>
+  <div class="col-sm-6"> 
+    <div class="card" style="width: 20rem;">
+       <img class="card-img-top" src="<%=product.image %>" alt="Card image cap"> 
+       <div class="card-body"> 
+         <h4 class="card-title"> <a href="/products/<%= product.id %>"> <%= product.name %> </a> </h4> 
+          <p class="card-text"><%=product.description %> <br>
+           Price: <%=product.price %></p> 
+       </div>
+     </div>
+   </div> 
+
+<!-- alternative to cards: media -->
+   <!-- <div class="col-sm-6">
+    <div class="media">
+      <img class="d-flex align-self-center mr-3" src= <%=product.image %> alt="image of product">
+      <div class="media-body">
+       <h5 class="mt-0"><a href="/products/<%= product.id %>"> <%= product.name %> </a> </h5>
+       <p> <%=product.description %> </p>
+       <p class="mb-0"> Price: <%=product.price %> </p>
+      </div>
+    </div>
+   </div> -->
+  <% end %>
+
+</main>
+
+
+
+   
+
+
+
+

@@ -1,0 +1,28 @@
+
+<main>
+
+ <header>
+    <img src="https://lh3.googleusercontent.com/zz04uNwHNKAsOSFMqn6wOeCVJxRm7kQdtnDEIYuSVX85CgKDOnqg3sjYkkDkvNdk_OXhpBAsy0VryVDxO2hfGHhzA70Y3r2gxiQKpXxIcMPcKwxA55z0Kv1QHgMO8hpBex-a4w-Ovw">
+  </header>
+
+  <div class="media">
+  <img class="d-flex align-self-center mr-3" src= <%=@product.image %> alt="image of product">
+
+  <div class="media-body">
+  <h2 class="mt-0"> <%= @product.name %> </h2>
+  <p> <%= @product.description %> </p>
+  <p class="mb-0"> <%= @product.price %> </p>
+  <p class= "<%= @product.sale_message_class %>"> <%= @product.sale_message %> </p>
+  <p> Tax: <%=@product.tax.round(2) %>
+  <p> Total Price w/Tax: <%= @product.total.round(2) %> </p> 
+  </div>
+  </div>
+
+<a class="btn btn-primary" href="/products/<%=@product.id%>/edit">Edit </a>
+<%= form_tag "/products/#{@product.id}", method: :delete do %>
+
+   <input class="btn btn-danger" type="submit" value="Delete Product">
+ <% end %>
+
+ </main>
+

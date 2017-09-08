@@ -1,0 +1,34 @@
+<main>
+
+<header>
+    <img src="https://lh3.googleusercontent.com/zz04uNwHNKAsOSFMqn6wOeCVJxRm7kQdtnDEIYuSVX85CgKDOnqg3sjYkkDkvNdk_OXhpBAsy0VryVDxO2hfGHhzA70Y3r2gxiQKpXxIcMPcKwxA55z0Kv1QHgMO8hpBex-a4w-Ovw">
+</header>
+
+  <h3> Complete form to edit <%= @product.name %>: </h3>
+
+<%= form_tag "/products/#{@product.id}", method: :patch do %>
+  <form>
+    <div class="form-group">
+      <label class="form-control-label" for="formGroupExampleInput">Name</label>
+      <input type="text" name="name" value= "<%= @product.name%>">
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" for="formGroupExampleInput2">Price</label>
+      <input type="text" name="price" value= "<%= @product.price%>">
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" for="formGroupExampleInput3">Image</label>
+    <input type="text" name="image" value= "<%= @product.image%>">
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" for="formGroupExampleInput">Description</label>
+      <input type="text" name="description" value= "<%= @product.description%>">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    
+  </form>
+<%end%>
+</main>

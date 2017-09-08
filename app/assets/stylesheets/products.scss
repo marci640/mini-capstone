@@ -1,3 +1,66 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// keep header background white
+header {
+  background-color: #FFFFFF;
+}
+
+body {
+  background-color: #F33B3F;
+}
+
+.nav {
+  color: #FFFFFF;
+  background-color: #BAE151;
+  padding: 10px 20px 10px 20px; 
+  border-bottom: 5px solid #FFFFFF;
+
+}
+
+.nav a {
+  color: inherit;
+  font-size: 15px;
+  margin-right: 15px; 
+}
+
+
+// for logo (it is within main)
+header img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 35px; 
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  border-bottom: 5px solid #F33B3F;
+}
+
+// make products list centered w/white background
+main {
+    margin: auto;
+    padding: 10px;
+    background-color: #FFFFFF;
+    padding-top: 20px;
+    margin-top: 40px;  
+}
+
+// add space between products
+.media {
+  padding-bottom: 30px; 
+}
+
+// conform size of images
+.d-flex {
+  width: 120px; 
+  height: 90px;
+}
+
+body{
+  font-family: Monaco, Futura, sans-serif; 
+}
+
+.discount-item {
+  color: red; 
+}
