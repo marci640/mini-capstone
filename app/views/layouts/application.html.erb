@@ -27,10 +27,26 @@
     <li class="nav-item">
       <a class="btn btn-danger" href="/products/new" role="button"> Add New </a>
     </li>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button> 
-    </form>
+    <li class="nav-item">
+      <a class="btn btn-danger" href="/products?sort=price" role="button">Sort by Price</a>
+    </li>
+   <!--  <li class="nav-item">
+      <a class="btn btn-danger" href="/products?sort_high=price" role="button">Sort by Price (high to low)</a>
+    </li> -->
+    <li class="nav-item">
+      <a class="btn btn-danger" href="/products?discount=true" role="button">Discounts!</a>
+    </li>
+
+    <li class="nav-item">
+      <div class="search_form">
+        <%= form_tag "/search", method: :post do %>
+        <%= text_field_tag :search %>
+          <button class="btn btn-danger my-2 my-sm-0">Search 
+          </button> 
+        <% end %>
+      </div>
+     </li> 
+    
   </ul>
 
   <div class="container">

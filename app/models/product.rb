@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  belongs_to :supplier
   
   def sale_message
     if price < 2
@@ -23,5 +24,7 @@ class Product < ApplicationRecord
   def total 
     total = price + @tax 
   end 
+
+
 
 end

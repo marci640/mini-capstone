@@ -2,6 +2,22 @@ class ProductsController < ApplicationController
   
   def index
     @products = Product.all
+    sort_attribute = params[:sort]
+    sort_high_attribute = params[:sort_high]
+    
+    
+      if sort_attribute
+        @products = Product.all.order(sort_attribute)
+      end 
+
+      if sort_high_attribute
+        @products = Product.all.order(sort_high_attribute => :desc)
+      end 
+
+      if params[:discount]
+        @products = Product.where("price < ?", 2.00)
+      end 
+
     render "index.html.erb"
   end 
 
@@ -14,7 +30,8 @@ class ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       image: params[:image],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: 1
       })
     new_product.save
     flash[:success] = "Successfully added new product."
@@ -22,7 +39,7 @@ class ProductsController < ApplicationController
   end 
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:id]) 
     render "show.html.erb"
   end 
 
@@ -48,6 +65,11 @@ class ProductsController < ApplicationController
     product.destroy
     flash[:warning] = "Product succesfully deleted."
     redirect_to "/products"
+  end 
+
+  def search 
+    @products = Product.where("name LIKE ?","%#{params[:search]}%")
+    render "index.html.erb"
   end 
 
 end
