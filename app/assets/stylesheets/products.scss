@@ -65,3 +65,13 @@ body{
   color: red; 
 }
 
+.row {
+  margin: auto;
+}
+
+.card {
+  height: calc(100% - 15px);
+  margin-bottom: 15px;
+  text-align: center
+}
+
