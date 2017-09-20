@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   patch "/products/:id" => "products#update"
   delete "/products/:id" => "products#destroy"
   post "/search" => "products#search"
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
+  get "/login" => "sessions#new"
+  post "/login" => "sessions#create"
+  get "/logout" => "sessions#destroy"
+  # get "/orders/new" => "orders#new"
+  post "/orders" => "orders#create"
+  get "/orders/:id" => "orders#show"
 end
 
 

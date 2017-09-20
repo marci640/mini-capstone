@@ -2,21 +2,23 @@ class ProductsController < ApplicationController
   
   def index
     @products = Product.all
-    sort_attribute = params[:sort]
-    sort_high_attribute = params[:sort_high]
     
-    
-      if sort_attribute
-        @products = Product.all.order(sort_attribute)
+      if params[:sort]
+        @products = Product.all.order(params[:sort])
       end 
 
-      if sort_high_attribute
-        @products = Product.all.order(sort_high_attribute => :desc)
+      if params[:sort_high]
+        @products = Product.all.order(params[:sort_high] => :desc)
       end 
 
       if params[:discount]
         @products = Product.where("price < ?", 2.00)
       end 
+
+      if params[:category]
+        @products = Category.find_by(title: params[:category]).products 
+      end
+
 
     render "index.html.erb"
   end 

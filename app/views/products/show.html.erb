@@ -16,14 +16,35 @@
   <p class= "<%= @product.sale_message_class %>"> <%= @product.sale_message %> </p>
   <p> Tax: <%=@product.tax.round(2) %>
   <p> Total Price w/Tax: <%= @product.total.round(2) %> </p> 
+  <p> Associated Categorie(s): 
+  <% @product.categories.each do |category| %> 
+  <%= category.title %>
+  <% end %>
+
+  </p>
   </div>
   </div>
+
 
 <a class="btn btn-primary" href="/products/<%=@product.id%>/edit">Edit </a>
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
 
    <input class="btn btn-danger" type="submit" value="Delete Product">
  <% end %>
+
+<div>
+</div>
+<h3> Complete form to add new order: </h3>
+  
+  <%= form_tag "/orders", method: :post do %>
+    <%= hidden_field_tag :product_id, @product.id %>
+    <%= label_tag :quantity %>
+    <%= number_field_tag :quantity %>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  
+  <%end%>
+
 
  </main>
 

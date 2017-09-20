@@ -1,0 +1,24 @@
+<main>
+
+ <header>
+    <img src="https://lh3.googleusercontent.com/zz04uNwHNKAsOSFMqn6wOeCVJxRm7kQdtnDEIYuSVX85CgKDOnqg3sjYkkDkvNdk_OXhpBAsy0VryVDxO2hfGHhzA70Y3r2gxiQKpXxIcMPcKwxA55z0Kv1QHgMO8hpBex-a4w-Ovw">
+ </header>
+
+  
+  <div class="media-body">
+  <p> User Email: <%= @order.user.email %> </p>
+  <p> Product Name: <%= @order.product.name %> </p>
+  <p> Purchased At: <%= @order.created_at %> </p>
+  <p> Quantity: <%= @order.quantity %> </p>
+  <p> Subtotal: <%= @order.subtotal %> </p>
+  <p> Tax: <%= @order.tax %> </p>
+  <p> Total: <%= @order.total %> </p>
+
+ <img src=<%=@order.product.images[0].url%> >
+  
+
+  
+  </div>
+
+ </main>
+

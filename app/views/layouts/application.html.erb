@@ -30,12 +30,32 @@
     <li class="nav-item">
       <a class="btn btn-danger" href="/products?sort=price" role="button">Sort by Price</a>
     </li>
+    <li class="nav-item">
+      <a class="btn btn-danger" href="/products?category=Drinks" role="button">Drinks</a>
+    </li>
+    <li class="nav-item">
+      <a class="btn btn-danger" href="/products?sort=price" role="button">Sort by Price</a>
+    </li>
    <!--  <li class="nav-item">
       <a class="btn btn-danger" href="/products?sort_high=price" role="button">Sort by Price (high to low)</a>
     </li> -->
     <li class="nav-item">
       <a class="btn btn-danger" href="/products?discount=true" role="button">Discounts!</a>
     </li>
+
+    <% if current_user == nil %>
+      <li class="nav-item">
+        <a class="btn btn-danger" href="/signup" role="button">Signup</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-danger" href="/login" role="button">Login</a>
+      </li>
+    
+    <% else %>
+    <li class="nav-item">
+      <a class="btn btn-danger" href="/logout" role="button">Logout</a>
+    </li>
+    <% end %>
 
     <li class="nav-item">
       <div class="search_form">
@@ -46,6 +66,17 @@
         <% end %>
       </div>
      </li> 
+
+    <div class="dropdown">
+      <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categories
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% Category.all.each do |category| %>
+         <a class="dropdown-item" href="/products?category=<%= category.title %>"><%=category.title%></a> 
+        <% end %>
+      </div>
+    </div>
     
   </ul>
 
@@ -55,3 +86,10 @@
   
   </body>
 </html> 
+
+
+
+
+
+
+
