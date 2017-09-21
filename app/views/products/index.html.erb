@@ -5,19 +5,18 @@
 
 <div class="row">
   <% @products.each do |product| %>
-  <div class="col-sm-6" > 
-    <div class="card" style="width: 20rem;">
-       <img class="card-img-top" src="<%=product.images[0].url %>" alt="Card image cap"> 
-       <div class="card-block"> 
-         <h4 class="card-title"> <a href="/products/<%= product.id %>"> <%= product.name %> </a> </h4> 
-          <p class="card-text"><%=product.description %> <br>
-           Price: <%=product.price %></p> 
-       </div>
-     </div>
-   </div> 
-
+   <div class="col-sm-6">
+    <div class="media">
+      <img class="d-flex align-self-center mr-3" src= <%=product.images[0].url %> alt="image of product">
+      <div class="media-body">
+       <h5 class="mt-0"><a href="/products/<%= product.id %>"> <%= product.name %> </a> </h5>
+       <p> <%=product.description %> </p>
+       <p class="mb-0"> Price: <%=product.price %> </p>
+      </div>
+    </div>
+   </div>
   <% end %>
-
+  
 </main>
 
 

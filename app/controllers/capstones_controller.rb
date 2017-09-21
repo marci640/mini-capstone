@@ -1,2 +1,0 @@
-class CapstonesController < ApplicationController
-end

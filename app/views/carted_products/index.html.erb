@@ -1,0 +1,24 @@
+<main>
+  <header>
+    <img src="https://lh3.googleusercontent.com/zz04uNwHNKAsOSFMqn6wOeCVJxRm7kQdtnDEIYuSVX85CgKDOnqg3sjYkkDkvNdk_OXhpBAsy0VryVDxO2hfGHhzA70Y3r2gxiQKpXxIcMPcKwxA55z0Kv1QHgMO8hpBex-a4w-Ovw">
+  </header>
+
+  <% @carted_products.each do |carted_product| %>
+  <div>
+  <p> Name: <%= carted_product.product.name %> </p> 
+  </div> 
+  <div>
+  <p> Quantity: <%= carted_product.quantity %> </p> 
+  </div>   
+  <div>
+  <p> Category: <%= carted_product.product.categories[0].title %> </p>
+  </div>
+  <%= link_to "Remove", "/cartedproducts/#{carted_product.id}", method: :delete %>
+  <% end %>
+
+
+
+<%= form_tag "/orders", method: :post do %>
+  <%= submit_tag "Checkout" %>
+  <% end %>
+</main>

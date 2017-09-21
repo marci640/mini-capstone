@@ -34,17 +34,19 @@
 
 <div>
 </div>
-<h3> Complete form to add new order: </h3>
+
+<div>
+<h3> Complete form to add to cart: </h3>
   
-  <%= form_tag "/orders", method: :post do %>
+  <%= form_tag "/cartedproducts", method: :post do %>
     <%= hidden_field_tag :product_id, @product.id %>
     <%= label_tag :quantity %>
     <%= number_field_tag :quantity %>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" href="/cartedproducts">Add To Cart</button>
   
   <%end%>
-
+</div>
 
  </main>
 

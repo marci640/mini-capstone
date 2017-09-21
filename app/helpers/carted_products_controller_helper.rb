@@ -1,0 +1,2 @@
+module CartedProductsControllerHelper
+end

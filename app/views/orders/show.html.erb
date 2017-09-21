@@ -4,21 +4,33 @@
     <img src="https://lh3.googleusercontent.com/zz04uNwHNKAsOSFMqn6wOeCVJxRm7kQdtnDEIYuSVX85CgKDOnqg3sjYkkDkvNdk_OXhpBAsy0VryVDxO2hfGHhzA70Y3r2gxiQKpXxIcMPcKwxA55z0Kv1QHgMO8hpBex-a4w-Ovw">
  </header>
 
+  <img class="apu" src="http://strategicedge.ca/backend/wp-content/uploads/2012/05/Apu-Thank-you-come-again.png" >
+
+  <h2> Order Confirmation Page </h2>
   
   <div class="media-body">
   <p> User Email: <%= @order.user.email %> </p>
-  <p> Product Name: <%= @order.product.name %> </p>
   <p> Purchased At: <%= @order.created_at %> </p>
-  <p> Quantity: <%= @order.quantity %> </p>
-  <p> Subtotal: <%= @order.subtotal %> </p>
-  <p> Tax: <%= @order.tax %> </p>
-  <p> Total: <%= @order.total %> </p>
-
- <img src=<%=@order.product.images[0].url%> >
-  
-
-  
+  <p> Subtotal: <%= number_to_currency(@order.subtotal) %> </p>
+  <p> Tax: <%= number_to_currency(@order.tax) %> </p>
+  <p> Total: <%= number_to_currency(@order.total )%> </p>
   </div>
 
+  <br>
+  
+  <div>
+  <h3> Your Items: </h3>
+<% @order.carted_products.each do |carted_product| %>
+<div class="col-sm-6">
+    <div class="media">
+      <img class="d-flex align-self-center mr-3" src=<%=carted_product.product.images[0].url %> >
+      <div class="media-body">
+       <h5 class="mt-0"><%= carted_product.product.name %></h5>
+       <p> <%= carted_product.quantity %></p>
+      </div>
+    </div>
+   </div>
+<%end%>
+ 
  </main>
 
