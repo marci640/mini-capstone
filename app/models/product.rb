@@ -7,6 +7,12 @@ class Product < ApplicationRecord
   has_many :carted_products
   has_many :orders, through: :carted_products
 
+  validates :name, uniqueness: true
+  validates :name, :price, :description, presence: true
+  validates :price, numericality: true
+  validates :description, length: { maximum: 500}
+
+
   def sale_message
     if price < 2
       "Discount Item!"

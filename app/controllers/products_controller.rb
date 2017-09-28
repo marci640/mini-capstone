@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   
+  before_action :authenticate_admin!, except: [:index, :show, :search]
+  
   def index
+    # @cart_count = current_user.carted_products.where(status: "carted").count 
+
     @products = Product.all
     
       if params[:sort]
@@ -19,25 +23,27 @@ class ProductsController < ApplicationController
         @products = Category.find_by(title: params[:category]).products 
       end
 
-
     render "index.html.erb"
   end 
 
   def new
-    render "new.html.erb"
+    @product = Product.new
+    render "new.html.erb"   
   end 
 
   def create
-    new_product = Product.new({
-      name: params[:name],
-      price: params[:price],
-      image: params[:image],
-      description: params[:description],
-      supplier_id: 1
-      })
-    new_product.save
-    flash[:success] = "Successfully added new product."
-    redirect_to "/products/#{new_product.id}"
+      @product = Product.new({
+        name: params[:name],
+        price: params[:price],
+        description: params[:description],
+        supplier_id: 1
+        })
+      if @product.save
+        flash[:success] = "Successfully added new product."
+        redirect_to "/products/#{@product.id}"
+      else 
+        render :new
+      end 
   end 
 
   def show
@@ -48,25 +54,30 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
     render "edit.html.erb"
-  end 
+  end
+  
 
   def update
-    product = Product.find(params[:id])
-    product.update(
-      name: params[:name],
-      price: params[:price],
-      description: params[:description]
-      )
-    flash[:info] = "Product successfully updated."
-    redirect_to "/products/#{product.id}"
+    @product = Product.find(params[:id])
+    @product.name = params[:name]
+    @product.price = params[:price]
+    @product.description = params[:description]
+    if @product.save
+      flash[:info] = "Product successfully updated."
+      redirect_to "/products/#{product.id}"
+    else 
+      render :edit
+    end 
   end 
 
+  
   def destroy
     product = Product.find(params[:id])
     product.destroy
     flash[:warning] = "Product succesfully deleted."
     redirect_to "/products"
   end 
+  
 
   def search 
     @products = Product.where("name LIKE ?","%#{params[:search]}%")

@@ -1,3 +1,15 @@
+<% if @product && @product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved: </h2>
+
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>
+
 
 <main>
 
@@ -11,17 +23,17 @@
   <form>
     <div class="form-group">
       <label class="form-control-label" for="formGroupExampleInput">Name</label>
-      <input type="text" name="name">
+      <input type="text" name="name" value= "<%= @product.name%>">
     </div>
 
     <div class="form-group">
       <label class="form-control-label" for="formGroupExampleInput2">Price</label>
-      <input type="text" name="price">
+      <input type="text" name="price" value ="<%= @product.price %>" >
     </div>
 
     <div class="form-group">
       <label class="form-control-label" for="formGroupExampleInput">Description</label>
-      <input type="text" name="description" >
+      <input type="text" name="description" value ="<%= @product.description %>" >
     </div>
     
     <button type="submit" class="btn btn-primary">Submit</button>

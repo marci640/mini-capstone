@@ -25,12 +25,12 @@
   </div>
   </div>
 
-
-<a class="btn btn-primary" href="/products/<%=@product.id%>/edit">Edit </a>
-<%= form_tag "/products/#{@product.id}", method: :delete do %>
-
-   <input class="btn btn-danger" type="submit" value="Delete Product">
- <% end %>
+  <% if current_user && current_user.admin %>
+    <a class="btn btn-primary" href="/products/<%=@product.id%>/edit">Edit </a>
+    <%= form_tag "/products/#{@product.id}", method: :delete do %>
+    <input class="btn btn-danger" type="submit" value="Delete Product">
+     <% end %>
+  <%end%>
 
 <div>
 </div>
